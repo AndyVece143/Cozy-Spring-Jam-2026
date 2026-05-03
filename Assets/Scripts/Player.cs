@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
         NoMove,
         Refill,
         Pour,
+        Float,
     
     }
     public State state;
@@ -34,6 +36,11 @@ public class Player : MonoBehaviour
     public Plant plant;
     public SpriteRenderer shadow;
     public SpriteRenderer waterBubble;
+    private LevelLoader loader;
+    private bool sceneTransition = false;
+
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip hurtSound;
 
     private void Awake()
     {
@@ -45,7 +52,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        loader = LevelLoader.FindAnyObjectByType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -67,6 +74,9 @@ public class Player : MonoBehaviour
             case State.HitStun:
                 HitStun();
                 break;
+            case State.Float:
+                Float();
+                break;
         }
     }
 
@@ -86,6 +96,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
+                SoundManager.instance.PlaySound(jumpSound);
                 isJumping = true;
                 jumpTimeCounter = jumpTime;
                 JumpForceMethod();
@@ -111,7 +122,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (IsGrounded())
+        if (IsGrounded() && body.linearVelocity.y == 0)
         {
             body.gravityScale = 1.5f;
             shadow.enabled = true;
@@ -201,6 +212,7 @@ public class Player : MonoBehaviour
     private void KnockBack()
     {
         Physics2D.IgnoreLayerCollision(6, 7);
+        SoundManager.instance.PlaySound(hurtSound);
         shadow.enabled = false;
         water = Mathf.Floor(water / 2);
 
@@ -255,6 +267,13 @@ public class Player : MonoBehaviour
         anim.SetInteger("react", react);
     }
 
+    private void Float()
+    {
+        //transform.position = floatPosition;
+        shadow.enabled = false;
+        body.gravityScale = 0;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (iFrames == false && state != State.HitStun && collision.gameObject.tag == "Apple")
@@ -302,5 +321,23 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         waterBubble.enabled = false;
+    }
+
+    public IEnumerator Floating(Vector2 floatPosition, string sceneName)
+    {
+        float time = 0;
+        while (time < 2)
+        {
+            time += Time.deltaTime;
+            transform.position = Vector2.Lerp(transform.position, floatPosition, time / 2);
+            if (time >= 1 && sceneTransition == false)
+            {
+                loader.LoadNextLevel(sceneName);
+                sceneTransition = true;
+            }
+            yield return null;
+        }
+
+        //loader.LoadNextLevel(sceneName);
     }
 }

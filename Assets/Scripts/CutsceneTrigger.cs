@@ -7,6 +7,8 @@ public class CutsceneTrigger : MonoBehaviour
     public CameraController mainCamera;
     public SoloBigDialogue cutscene;
     private bool triggered = false;
+    public int cutsceneNumber;
+    private float dialogueTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,22 +23,42 @@ public class CutsceneTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && triggered == false)
+        if (collision.tag == "Player" && triggered == false && cutsceneNumber == 1 && player.IsGrounded())
         {
-            player.StopMoving(2);
-            player.state = Player.State.NoMove;
-            mainCamera.anim.enabled = true;
-            mainCamera.anim.SetTrigger("cutscene1");
-            triggered = true;
-            StartCoroutine(CutsceneWaiter());
+            dialogueTimer += Time.deltaTime;
+            if (dialogueTimer > 0.1f)
+            {
+                player.StopMoving(2);
+                player.state = Player.State.NoMove;
+                mainCamera.anim.enabled = true;
+                mainCamera.anim.SetTrigger("cutscene1");
+                triggered = true;
+                StartCoroutine(CutsceneWaiter(3.5f));
+            }
+
+        }
+
+        if (collision.tag == "Player" && triggered == false && cutsceneNumber == 2 && player.IsGrounded())
+        {
+            dialogueTimer += Time.deltaTime;
+            if (dialogueTimer > 0.1f)
+            {
+                player.StopMoving(2);
+                player.state = Player.State.NoMove;
+                mainCamera.anim.enabled = true;
+                mainCamera.anim.SetTrigger("cutscene2");
+                triggered = true;
+                StartCoroutine(CutsceneWaiter(3.5f));
+            }
+
         }
     }
 
-    private IEnumerator CutsceneWaiter()
+    private IEnumerator CutsceneWaiter(float timing)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(timing);
         SoloBigDialogue newDialogue = Instantiate(cutscene);
     }
 }

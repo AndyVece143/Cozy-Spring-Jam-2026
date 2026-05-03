@@ -10,6 +10,7 @@ public class Sink : MonoBehaviour
         On,
     }
     public State state;
+    public AudioSource water;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,11 +34,15 @@ public class Sink : MonoBehaviour
 
     private void Off()
     {
+        water.volume = 0;
         anim.SetBool("refill", false);
+
     }
 
     private void On()
     {
+        water.volume = 1;
         anim.SetBool("refill", true);
+
     }
 }

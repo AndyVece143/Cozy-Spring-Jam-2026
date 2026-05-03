@@ -51,7 +51,7 @@ public class TitleScreen : MonoBehaviour
 
     public void WatchPrologue()
     {
-        loader.LoadNextLevel("BeforeThePlant");
+        loader.LoadNextLevel("Prologue");
     }
 
     IEnumerator MoveElements(bool right)
