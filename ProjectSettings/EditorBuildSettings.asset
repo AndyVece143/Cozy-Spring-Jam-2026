@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: c338d5fdea50d78479fccaf6bbdb96fe
+  - enabled: 1
+    path: Assets/Scenes/BeforeThePlant.unity
+    guid: 4887c668053f47f41bae21a77bcb1157
+  - enabled: 1
     path: Assets/Scenes/GrowingTime.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects:
