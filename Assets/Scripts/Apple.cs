@@ -17,7 +17,7 @@ public class Apple : MonoBehaviour
     void Start()
     {
         //timer = Random.Range(1, 3);
-        timer = 1f;
+        timer = 0.7f;
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -31,7 +31,7 @@ public class Apple : MonoBehaviour
         if (timer <= 0 && appleState < 3)
         {
             //timer = Random.Range(1, 3);
-            timer = 1f;
+            timer = 0.7f;
             if (appleState == 0)
             {
                 anim.SetTrigger("growing1");

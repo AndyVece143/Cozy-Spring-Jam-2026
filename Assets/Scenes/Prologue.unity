@@ -2315,7 +2315,7 @@ PrefabInstance:
     - target: {fileID: 4096631214065706070, guid: 469f923036899f44585279f91a30927f, type: 3}
       propertyPath: 'lines.Array.data[0]'
       value: It's been a good while since I've been able to enjoy myself without
-        any thought.
+        thinking about much.
       objectReference: {fileID: 0}
     - target: {fileID: 4096631214065706070, guid: 469f923036899f44585279f91a30927f, type: 3}
       propertyPath: 'lines.Array.data[1]'
@@ -5227,6 +5227,8 @@ MonoBehaviour:
   plant: {fileID: 0}
   shadow: {fileID: 302921554}
   waterBubble: {fileID: 867065166}
+  jumpSound: {fileID: 0}
+  hurtSound: {fileID: 0}
 --- !u!50 &1986243262
 Rigidbody2D:
   serializedVersion: 5

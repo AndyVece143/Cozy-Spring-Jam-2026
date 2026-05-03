@@ -11,7 +11,7 @@ public class Tree : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnTimer = Random.Range(2, 4);
+        spawnTimer = Random.Range(1, 3);
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Tree : MonoBehaviour
         else
         {
             Instantiate(apple, spawnPos, Quaternion.identity);
-            spawnTimer = Random.Range(2, 4);
+            spawnTimer = Random.Range(1, 3);
         }
     }
 }

@@ -1420,15 +1420,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Music: All music by LackOfBeef
-
-    Font: EXEPixelPerfect font by Gazbriel
-
-    Everything
-    else is made by me!
-
-
-    Specific links will be provided on the itch.io page!'
+  m_text: "Music: All music by LackOfBeef\nFont: EXEPixelPerfect font by Gazbriel\nWater
+    Sound Effect by Ali Baran Avs from Pixabay \nEverything else is made by me!\n\nSpecific
+    links will be provided on the itch.io page!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54d4ec64a4f02b245acfbc5d125bdd87, type: 2}
   m_sharedMaterial: {fileID: -5643909019232862303, guid: 54d4ec64a4f02b245acfbc5d125bdd87, type: 2}
@@ -1455,8 +1449,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 86.4
-  m_fontSizeBase: 86.4
+  m_fontSize: 81.16
+  m_fontSizeBase: 81.16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

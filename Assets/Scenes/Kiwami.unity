@@ -642,8 +642,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6890980685157577784, guid: 469f923036899f44585279f91a30927f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.072838
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890980685157577784, guid: 469f923036899f44585279f91a30927f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.36
+      value: -7.3729
       objectReference: {fileID: 0}
     - target: {fileID: 6890980685157577784, guid: 469f923036899f44585279f91a30927f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1171,7 +1175,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 2117a184af7977649bfb68b6da8ae4fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3852,7 +3856,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: d0e764c1c0780264e8d60ad94af7edc1, type: 3}
+  m_Resource: {fileID: 8300000, guid: d0f62e1a63c18514ab5fbce38dbc3c3f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
